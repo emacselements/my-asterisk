@@ -13,7 +13,7 @@
    ("M-\"" . my-add-quotes)
    ("M-8" . my-add-double-asterisks)
    ("M-~" . my-add-double-tildes)
-   ("M-`" . my-add-backticks)
+   ("M-'" . my-add-backticks)
    ("M-1" . jump-out-of-pair))
   :config
   (defun my-add-slashes (beg end)

@@ -13,7 +13,7 @@
    ("M-\"" . my-add-quotes)
    ("M-8" . my-add-double-asterisks)
    ("M-~" . my-add-double-tildes)
-   ("M-`" . my-add-backticks)
+   ("M-'" . my-add-backticks)
    ("M-1" . jump-out-of-pair))
   :config
   (defun my-add-slashes (beg end)
@@ -91,13 +91,24 @@
   (defun jump-out-of-pair ()
     "Jump outside of the closest pair delimiter (parenthesis, bracket, quote, etc.)."
     (interactive)
-    (let ((found (search-forward-regexp "[])}\"'`*=]" nil t)))
+    (let ((found (search-forward-regexp "[])}\"'`*=~]" nil t)))
       (when found
         (cond ((or (looking-back "\\*\\*" 2)
+                   (looking-back "~~" 2)
                    (looking-back "``" 2)
                    (looking-back "''" 2)
                    (looking-back "==" 2))
                (forward-char))
               (t (forward-char 0)))))))
+
+
+(defun insert-markdown-orgstyle-date ()
+  "Insert today's date in Org-style ISO format: # 2025-10-08 Wed."
+  (interactive)
+  (insert (format "# %Y-%m-%d %a" (current-time))))
+
+;; Bind in markdown-mode only
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c .") #'insert-markdown-orgstyle-date))
 
 (provide 'asterisk)

@@ -44,7 +44,6 @@ A simple Emacs package that provides convenient keybindings for wrapping selecte
 | `M-8` | Double asterisks | `**text**` (bold) |
 | `M-~` | Double tildes | `~~text~~` (strikethrough) |
 | `` M-` `` | Backticks | `` `text` `` (inline code) |
-| `C-c .` | Insert Org-style date | `# 2025-10-08 Wed` |
 
 ### Navigation
 

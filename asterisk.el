@@ -101,4 +101,14 @@
                (forward-char))
               (t (forward-char 0)))))))
 
+
+(defun insert-markdown-orgstyle-date ()
+  "Insert today's date in Org-style ISO format: # 2025-10-08 Wed."
+  (interactive)
+  (insert (format-time-string "# %Y-%m-%d %a")))
+
+;; Bind in markdown-mode only
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c .") #'insert-markdown-orgstyle-date))
+
 (provide 'asterisk)
